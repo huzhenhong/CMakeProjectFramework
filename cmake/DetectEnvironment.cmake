@@ -1,6 +1,6 @@
 
 # 检测操作系统
-message("\n------------------ Start detect system platform ------------------")
+# message("\n------------------ Start detect system platform ------------------")
 message("- host system name is: ${CMAKE_SYSTEM_NAME}")
 if(WIN32)
     set(USE_SYSTEM_PLATFORM "WINDOWS")
@@ -34,10 +34,10 @@ else()
     set(USE_SYSTEM_PLATFORM "UNKNOWN")
     message(WARNING "Unknown system")
 endif()
-message("------------------ Stop detect system platform ------------------\n")
+# message("------------------ Stop detect system platform ------------------\n")
 
 # 检测编译器
-message("\n------------------ Start detect compiler id ------------------")
+# message("\n------------------ Start detect compiler id ------------------")
 message("- compiler id is: ${CMAKE_CXX_COMPILER_ID}")
 if(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
     set(USE_CXX_COMPILER "MSVC")
@@ -46,13 +46,14 @@ elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
 elseif(CMAKE_CXX_COMPILER_ID MATCHES "AppleClang")
     set(USE_CXX_COMPILER "Clang")
 else()
+    set(USE_CXX_COMPILER "Unknown compiler")
     message(WARNING "Unknown compiler")
 endif()
-message("------------------ Stop detect compiler id ------------------\n")
+# message("------------------ Stop detect compiler id ------------------\n")
 
 
 # 检测处理器体系架构
-message("\n------------------ Start detect compiler processor architecture ------------------")
+# message("\n------------------ Start detect compiler processor architecture ------------------")
 message("- host processor architecture is: ${CMAKE_HOST_SYSTEM_PROCESSOR}")
 if(CMAKE_HOST_SYSTEM_PROCESSOR MATCHES "i386")
     set(USE_HOST_SYSTEM_PROCESSOR "i386")
@@ -65,11 +66,11 @@ elseif(CMAKE_HOST_SYSTEM_PROCESSOR MATCHES "AMD64")
 else()
     message(WARNING "Unknown host processor architecture")
 endif()
-message("------------------ Stop detect compiler processor architecture ------------------\n")
+# message("------------------ Stop detect compiler processor architecture ------------------\n")
 
 
 # 检测处理器位宽
-message("\n------------------ Start detect processor bit wide ------------------")
+# message("\n------------------ Start detect processor bit wide ------------------")
 if(CMAKE_SIZEOF_VOID_P EQUAL 8)
     set(USE_X64 true)
     message("- processor is 64 bits")
@@ -77,4 +78,4 @@ else()
     set(USE_X64 false)
     message("- processor is 32 bits")
 endif()
-message("------------------ Stop detect processor bit wide ------------------\n")
+# message("------------------ Stop detect processor bit wide ------------------\n")

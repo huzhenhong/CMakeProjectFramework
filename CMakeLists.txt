@@ -7,6 +7,10 @@ project("CMakeProjectFramework"
     HOMEPAGE_URL "project site"
     )
 
+include(cmake/DetectEnvironment.cmake)
+include(cmake/CompileOptions.cmake)
+include(cmake/InstallFunc.cmake)
+
 message("\n================= Start configure project [${PROJECT_NAME}] ==================")
 
 set(CMAKE_C_STANDARD 11)                    # 设置整个项目的默认 C 标准
@@ -28,10 +32,6 @@ option(IS_BUILD_TEST "option for build test" ON)
 option(IS_BUILD_INSTALL "option for build install" ON)
 message("IS_BUILD_TEST: ${IS_BUILD_TEST}")
 message("IS_BUILD_INSTALL: ${IS_BUILD_INSTALL}")
-
-include(cmake/DetectEnvironment.cmake)
-include(cmake/CompileOptions.cmake)
-include(cmake/InstallFunc.cmake)
 
 add_subdirectory(src/demo)
 

@@ -1,5 +1,5 @@
 
-message("\n------------------ Start configure install option ------------------")
+# message("\n------------------ Start configure install option ------------------")
 
 include(GNUInstallDirs)
 
@@ -19,7 +19,7 @@ set(INSTALL_DOC       "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_DOCDIR}")        
 set(INSTALL_CMAKE     "${CMAKE_INSTALL_PREFIX}/cmake")                              # ./install/cmake
 set(INSTALL_EXAMPLE   "${CMAKE_INSTALL_PREFIX}/example")                            # ./install/example
 
-message("------------------ Stop configure install option ------------------\n")
+# message("------------------ Stop configure install option ------------------\n")
 
 function(InstallFunc target_name)
     install(

@@ -3,7 +3,7 @@
 option(BUILD_SHARED_LIBS "Build shared instead of static libraries." ON) # 开启后默认构建动态库
 
 # 编译选项
-message("\n------------------ Start configure compile option ------------------")
+# message("\n------------------ Start configure compile option ------------------")
 if(USE_CXX_COMPILER MATCHES "MSVC")
     message("- configure MSVC compile option")
     add_compile_options("$<$<C_COMPILER_ID:MSVC>:/source-charset:utf-8>")
@@ -77,11 +77,11 @@ endif()
 # message("CMAKE_CXX_FLAGS_MINSIZEREL: ${CMAKE_CXX_FLAGS_MINSIZEREL}")
 # message("CMAKE_CXX_FLAGS_RELEASE: ${CMAKE_CXX_FLAGS_RELEASE}")
 # message("CMAKE_CXX_FLAGS_RELWITHDEBINFO: ${CMAKE_CXX_FLAGS_RELWITHDEBINFO}")
-message("------------------ Stop configure compile option ------------------\n")
+# message("------------------ Stop configure compile option ------------------\n")
 
 
 # 编译宏定义
-message("\n------------------ Start configure compile definitions ------------------")
+# message("\n------------------ Start configure compile definitions ------------------")
 if(USE_CXX_COMPILER MATCHES "MSVC")
     message("- configure MSVC compile definitions")
     add_compile_definitions(_SCL_SECURE_NO_WARNINGS)  # Calling any one of the potentially unsafe methods in the Standard C++ Library
@@ -93,11 +93,11 @@ elseif(USE_CXX_COMPILER MATCHES "Clang")
     message("- configure Clang compile definitions")
 
 endif()
-message("------------------ Stop configure compile definitions ------------------\n")
+# message("------------------ Stop configure compile definitions ------------------\n")
 
 
 # 链接配置
-message("\n------------------ Start configure link option ------------------")
+# message("\n------------------ Start configure link option ------------------")
 if(USE_SYSTEM_PLATFORM MATCHES "WINDOWS")
     if(USE_CXX_COMPILER MATCHES "MSVC")
         if(USE_X64)
@@ -137,4 +137,4 @@ elseif(USE_SYSTEM_PLATFORM MATCHES "OSX")
 else()
     message("- unkown system platform")
 endif()
-message("------------------ Stop configure link option ------------------\n")
+# message("------------------ Stop configure link option ------------------\n")
