@@ -50,7 +50,8 @@ AlignAfterOpenBracket:	Align
 AlignConsecutiveAssignments: AcrossComments
 
 # 连续声明时，对齐所有声明的变量名
-AlignConsecutiveDeclarations:	AcrossEmptyLinesAndComments
+#AlignConsecutiveDeclarations:	AcrossEmptyLinesAndComments
+AlignConsecutiveDeclarations:	AcrossComments
 
 #AlignEscapedNewlines: Right
  

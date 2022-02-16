@@ -1,5 +1,3 @@
-message("\n================= Start configure project ==================")
-
 cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
 
 project("CMakeProjectFramework" 
@@ -8,6 +6,8 @@ project("CMakeProjectFramework"
     DESCRIPTION "something about this project"
     HOMEPAGE_URL "project site"
     )
+
+message("\n================= Start configure project [${PROJECT_NAME}] ==================")
 
 set(CMAKE_C_STANDARD 11)                    # 设置整个项目的默认 C 标准
 set(CMAKE_CXX_STANDARD 17)                  # 设置整个项目的默认 C++ 标准
@@ -18,13 +18,13 @@ set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)    # 在 Windows 上导出所有库符�
 set(CMAKE_MACOSX_RPATH ON)                  # macOS上动态库使用相对路径
 
 # 设置默认输出路径
-set(CMAKE_PDB_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR})
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR})
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR})
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/${CMAKE_INSTALL_BINDIR})
+set(CMAKE_PDB_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR})
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR})
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR})
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_BINDIR})
 
 option(IS_BUILD_TEST "option for build test" ON)
-option(IS_BUILD_INSTALL "option for build install" OFF)
+option(IS_BUILD_INSTALL "option for build install" ON)
 message("IS_BUILD_TEST: ${IS_BUILD_TEST}")
 message("IS_BUILD_INSTALL: ${IS_BUILD_INSTALL}")
 
@@ -32,7 +32,7 @@ include(cmake/DetectEnvironment.cmake)
 include(cmake/CompileOptions.cmake)
 include(cmake/InstallFunc.cmake)
 
-add_subdirectory(src)
+add_subdirectory(src/demo)
 
 if(IS_BUILD_TEST)
     add_subdirectory(test)
@@ -40,7 +40,7 @@ endif()
 
 # 安装目标
 if(IS_BUILD_INSTALL)
-    InstallFunc(${CMAKE_PROJECT_NAME})
+    InstallFunc(${PROJECT_NAME})
 endif()
 
-message("================== Stop configure project ==================\n")
+message("================== Stop configure project [${PROJECT_NAME}] ==================\n")

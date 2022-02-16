@@ -3,7 +3,12 @@ message("\n------------------ Start configure install option ------------------"
 
 include(GNUInstallDirs)
 
-# set(CMAKE_INSTALL_PREFIX "${CMAKE_SOURCE_DIR}/install")
+if(DEFINED USER_INSTALL_PREFIX)
+    set(CMAKE_INSTALL_PREFIX ${CMAKE_SOURCE_DIR}/${USER_INSTALL_PREFIX})
+else()
+    set(CMAKE_INSTALL_PREFIX ${CMAKE_SOURCE_DIR}/install)
+endif()
+
 message("CMAKE_INSTALL_PREFIX: ${CMAKE_INSTALL_PREFIX}")
 
 set(INSTALL_BIN       "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_BINDIR}")            # ./install/bin
@@ -57,9 +62,9 @@ function(InstallFunc target_name)
         )
 
     configure_package_config_file(
-        ${CMAKE_SOURCE_DIR}/config/${target_name}Config.cmake.in
-        ${CMAKE_SOURCE_DIR}/config/${target_name}Config.cmake
-    INSTALL_DESTINATION 
+            ${CMAKE_SOURCE_DIR}/config/${target_name}Config.cmake.in
+            ${CMAKE_SOURCE_DIR}/config/${target_name}Config.cmake
+        INSTALL_DESTINATION 
             ${INSTALL_CMAKE}
         )
 

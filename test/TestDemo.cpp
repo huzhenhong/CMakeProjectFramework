@@ -1,5 +1,5 @@
 /*************************************************************************************
- * Description  : 
+ * Description  :
  * Version      : 1.0
  * Author       : huzhenhong
  * Date         : 2022-01-20 13:58:58
@@ -8,7 +8,7 @@
  * FilePath     : \\CMakeProjectFramework\\test\\TestAlgorithm.cpp
  * Copyright (C) 2022 huzhenhong. All rights reserved.
  *************************************************************************************/
-#include "../src/lib-impl/IAlgorithm.h"
+#include "../src/demo/IAlgorithm.h"
 #include <iostream>
 
 int main(int argc, char* argv[])

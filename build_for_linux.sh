@@ -7,7 +7,7 @@ build_type=Debug
 # build_type=RelWithDebInfo
 is_build_test=OFF
 is_install=ON
-install_prefix=./install/
+install_prefix=install
 echo build type $build_type
 echo build test switch $is_build_test
 echo install switch $is_install
@@ -21,7 +21,7 @@ cmake .. \
 -DCMAKE_BUILD_TYPE=$build_type \
 -DIS_BUILD_TEST=$is_build_test \
 -DIS_BUILD_INSTALL=$is_install \
--DCMAKE_INSTALL_PREFIX=$install_prefix 
+-DUSER_INSTALL_PREFIX=$install_prefix 
 
 make -j6
 

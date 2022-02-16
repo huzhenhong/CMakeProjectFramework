@@ -1,6 +1,6 @@
 
 
-option(BUILD_SHARED_LIBS        "Build shared instead of static libraries."             ON) # 开启后默认构建动态库
+option(BUILD_SHARED_LIBS "Build shared instead of static libraries." ON) # 开启后默认构建动态库
 
 # 编译选项
 message("\n------------------ Start configure compile option ------------------")
