@@ -1,5 +1,7 @@
 .idea
-.vscode
+.vscode/settings.json
 build*
 debug
 install
+config/*Config.cmake
+config/*ConfigVersion.cmake
