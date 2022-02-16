@@ -54,7 +54,7 @@ function(InstallFunc target_name)
 
     include(CMakePackageConfigHelpers)
 
-    write_basic_package_version_file(${CMAKE_SOURCE_DIR}/config/${target_name}ConfigVersion.cmake
+    write_basic_package_version_file(${CMAKE_CURRENT_SOURCE_DIR}/config/${target_name}ConfigVersion.cmake
         VERSION 
             ${CMAKE_PROJECT_VERSION}
         COMPATIBILITY 
@@ -62,16 +62,16 @@ function(InstallFunc target_name)
         )
 
     configure_package_config_file(
-            ${CMAKE_SOURCE_DIR}/config/${target_name}Config.cmake.in
-            ${CMAKE_SOURCE_DIR}/config/${target_name}Config.cmake
+            ${CMAKE_CURRENT_SOURCE_DIR}/config/${target_name}Config.cmake.in
+            ${CMAKE_CURRENT_SOURCE_DIR}/config/${target_name}Config.cmake
         INSTALL_DESTINATION 
             ${INSTALL_CMAKE}
         )
 
     install(
         FILES
-            ${CMAKE_SOURCE_DIR}/config/${target_name}ConfigVersion.cmake
-            ${CMAKE_SOURCE_DIR}/config/${target_name}Config.cmake
+            ${CMAKE_CURRENT_SOURCE_DIR}/config/${target_name}ConfigVersion.cmake
+            ${CMAKE_CURRENT_SOURCE_DIR}/config/${target_name}Config.cmake
         DESTINATION
             ${INSTALL_CMAKE}
         )

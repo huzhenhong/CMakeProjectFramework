@@ -16,6 +16,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)         # 开启防止编译器回退到支�
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)     # 默认为开启，代码位置无关，避免使用动态链接库时需要重定位
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)    # 在 Windows 上导出所有库符号
 set(CMAKE_MACOSX_RPATH ON)                  # macOS上动态库使用相对路径
+set(CMAKE_DEBUG_POSTFIX "_d")
 
 # 设置默认输出路径
 set(CMAKE_PDB_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR})

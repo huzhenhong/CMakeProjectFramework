@@ -7,7 +7,6 @@ foreach(TEST_SRC ${TEST_SRC_LIST})
     message(STATUS "添加测试程序:${TEST_EXE_NAME}")
     
     add_executable(${TEST_EXE_NAME} ${TEST_SRC})
-    add_executable(${TEST_EXE_NAME}::${TEST_EXE_NAME} ALIAS ${TEST_EXE_NAME})
     # target_include_directories(${TEST_EXE_NAME} 
     #     PRIVATE
     #         ${CMAKE_CURRENT_SOURCE_DIR}
@@ -20,7 +19,7 @@ foreach(TEST_SRC ${TEST_SRC_LIST})
 
     target_link_libraries(${TEST_EXE_NAME} 
         PRIVATE 
-            ${CMAKE_PROJECT_NAME}
+            ${PROJECT_NAME}
         )
 
 endforeach()
