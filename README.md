@@ -18,12 +18,32 @@
 
   ```cmake
   # 可以更改生成Target的名称
-  set(Target ${CMAKE_PROJECT_NAME})
+  set(Target ${PROJECT_NAME})
+  
+  # 导出接口头文件
+  set_target_properties(${Target} 
+      PROPERTIES 
+          PUBLIC_HEADER 
+              ${CMAKE_CURRENT_SOURCE_DIR}/IAlgorithm.h
+      )
   ```
 
-- src/lib-impl目录下添加库实现代码
+- src/demo目录下添加库实现代码
 
 - src/test目录下添加测试代码
+
+- 子仓库
+
+  ```sh
+  # 添加
+  git submodule add <仓库地址> <本地路径>
+  # 删除
+  git submodule deinit sub-name
+  git rm sub-name
+  
+  ```
+
+  
 
 - 运行根目录下的build_for_xxx，在对应平台完成编译和安装，可以修改编译类型，是否编译测试模块，是否进行安装
 
