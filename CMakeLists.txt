@@ -30,10 +30,8 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_BINDIR})
 
 option(IS_BUILD_TEST "option for build test" ON)
 option(IS_BUILD_INSTALL "option for build install" ON)
-message("IS_BUILD_TEST: ${IS_BUILD_TEST}")
-message("IS_BUILD_INSTALL: ${IS_BUILD_INSTALL}")
 
-add_subdirectory(src/demo)
+add_subdirectory(src)
 
 if(IS_BUILD_TEST)
     add_subdirectory(test)

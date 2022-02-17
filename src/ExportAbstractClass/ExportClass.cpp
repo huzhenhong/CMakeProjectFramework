@@ -2,21 +2,20 @@
  * Description  :
  * Version      : 1.0
  * Author       : huzhenhong
- * Date         : 2022-01-20 14:27:20
+ * Date         : 2022-01-20 14:30:08
  * LastEditors  : huzhenhong
- * LastEditTime : 2022-02-17 09:34:20
- * FilePath     : \\CMakeProjectFramework\\src\\demo\\Algorithm.h
+ * LastEditTime : 2022-02-17 15:11:52
+ * FilePath     : \\CMakeProjectFramework\\src\\demo\\ExportAbstractClass\\ExportClass.cpp
  * Copyright (C) 2022 huzhenhong. All rights reserved.
  *************************************************************************************/
-#pragma once
-#include "IAlgorithm.h"
+#include "ExportClass.h"
 
 
-class Algorithm : public IAlgorithm
+ExportClass::ExportClass() {}
+
+ExportClass::~ExportClass() {}
+
+int ExportClass::Sum(int a, int b)
 {
-  public:
-    Algorithm();
-    ~Algorithm();
-
-    int Sum(int a, int b) override;
-};
+    return a + b;
+}

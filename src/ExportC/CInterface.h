@@ -1,18 +1,15 @@
 /*************************************************************************************
- * Description  : 
+ * Description  :
  * Version      : 1.0
  * Author       : huzhenhong
- * Date         : 2022-01-20 15:09:42
+ * Date         : 2022-01-20 14:14:23
  * LastEditors  : huzhenhong
- * LastEditTime : 2022-01-20 15:09:42
- * FilePath     : \\CMakeProjectFrame\\src\\Algorithm\\IAlgorithm.cpp
+ * LastEditTime : 2022-02-17 16:18:05
+ * FilePath     : \\CMakeProjectFramework\\src\\demo\\ExportC\\CInterface.h
  * Copyright (C) 2022 huzhenhong. All rights reserved.
  *************************************************************************************/
-#include "IAlgorithm.h"
-#include "Algorithm.h"
+#pragma once
+#include "../common/ExportMarco.h"
 
 
-IAlgorithmPtr CreateAlgorithm()
-{
-    return std::make_shared<Algorithm>();
-}
+EXTERN_C LIBRARY_API int Sum(int a, int b);

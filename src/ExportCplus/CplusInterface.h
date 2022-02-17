@@ -1,21 +1,14 @@
 /*************************************************************************************
- * Description  : 
+ * Description  :
  * Version      : 1.0
  * Author       : huzhenhong
- * Date         : 2022-01-20 14:30:08
+ * Date         : 2022-01-20 14:14:23
  * LastEditors  : huzhenhong
- * LastEditTime : 2022-01-20 14:31:16
- * FilePath     : \\CMakeProjectFrame\\src\\Algorithm\\Algorithm.cpp
+ * LastEditTime : 2022-02-17 15:21:56
+ * FilePath     : \\CMakeProjectFramework\\src\\demo\\ExportCplus\\impl.h
  * Copyright (C) 2022 huzhenhong. All rights reserved.
  *************************************************************************************/
-#include "Algorithm.h"
+#pragma once
+#include "../common/ExportMarco.h"
 
-
-Algorithm::Algorithm() {}
-
-Algorithm::~Algorithm() {}
-
-int Algorithm::Sum(int a, int b)
-{
-    return a + b;
-}
+LIBRARY_API int Sum(int a, int b);
