@@ -7,7 +7,8 @@
             "request": "launch",
             "program": "${command:cmake.launchTargetPath}",
             "args": [
-
+                "arg1",
+                "arg2"
             ],
 
             // 以上必须要有

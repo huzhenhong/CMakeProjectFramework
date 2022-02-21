@@ -2,8 +2,8 @@
 
 git submodule update --init --recursive
 
-set build_type=Debug
-@REM set build_type=Release
+@REM set build_type=Debug
+set build_type=Release
 @REM set build_type=RelWithDebInfo
 set is_build_test=OFF
 set is_install=ON

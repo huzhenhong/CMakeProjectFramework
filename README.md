@@ -1,4 +1,4 @@
-### 一个比较简单的跨平台C++开发框架
+### C++跨平台开发框架
 
 ##### 使用方法
 
@@ -14,29 +14,46 @@
       )
   ```
 
+  同步修改 config\\**CMakeProjectFramework**Config.cmake.in 为工程名
+
 - 修改src目录下的CMakeLists.txt
 
   ```cmake
-  # 可以更改生成Target的名称
-  set(Target ${PROJECT_NAME})
+  # 开启导出动态库，不开启 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON) 时需要
+  target_compile_definitions(${Target}
+      PRIVATE
+          LIBRARY_EXPORT
+  )
   
   # 导出接口头文件
+  set(${Target}_EXPORT_HEADER 
+      ${CMAKE_CURRENT_SOURCE_DIR}/common/SysInclude.h
+      ${CMAKE_CURRENT_SOURCE_DIR}/common/ExportMarco.h
+      ${CMAKE_CURRENT_SOURCE_DIR}/ExportAbstractClass/AbstractClassInterface.h
+      ${CMAKE_CURRENT_SOURCE_DIR}/ExportC/CInterface.h
+      ${CMAKE_CURRENT_SOURCE_DIR}/ExportCplus/CplusInterface.h
+      ${CMAKE_CURRENT_SOURCE_DIR}/ExportClass/ClassInterface.h)
+  
   set_target_properties(${Target} 
       PROPERTIES 
           PUBLIC_HEADER 
-              ${CMAKE_CURRENT_SOURCE_DIR}/IAlgorithm.h
+              "${${Target}_EXPORT_HEADER}"
       )
   ```
 
-- src/demo目录下添加库实现代码
+- src目录下添加库实现代码
 
-- src/test目录下添加测试代码
+- test目录下添加测试代码
 
 - 子仓库
 
   ```sh
   # 添加
-  git submodule add <仓库地址> <本地路径>
+  git submodule add [-b master]<仓库地址> <本地路径>
+  
+  # 递归更新子模块
+  git submodule update --init --recursive
+  
   # 删除
   git submodule deinit sub-name
   git rm sub-name
@@ -63,7 +80,7 @@
     ```sh
     build_type=Debug
     # build_type=Release
-    # build_type=RelWithDebInfo
+    # build_type=RelWithDebInfo 
     is_build_test=OFF
     is_install=ON
     install_prefix=./install/

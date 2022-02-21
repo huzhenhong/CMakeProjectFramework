@@ -25,7 +25,7 @@ target_compile_definitions(${Target}
 
 # 导出接口头文件
 set(${Target}_EXPORT_HEADER 
-    ${CMAKE_CURRENT_SOURCE_DIR}/common/BaseInclude.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/common/SysInclude.h
     ${CMAKE_CURRENT_SOURCE_DIR}/common/ExportMarco.h
     ${CMAKE_CURRENT_SOURCE_DIR}/ExportAbstractClass/AbstractClassInterface.h
     ${CMAKE_CURRENT_SOURCE_DIR}/ExportC/CInterface.h
