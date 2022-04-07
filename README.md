@@ -1,6 +1,10 @@
-### C++跨平台开发框架
+## C++跨平台开发框架
 
-##### 使用方法
+#### 开启代码提交格式化（可选）
+
+运行根目录下的 `pre-install.sh` 或者 `pre-install.bat`
+
+#### 使用方法
 
 - 修改根目录下的CMakeLists.txt，修改工程名字等信息
 
@@ -57,11 +61,8 @@
   # 删除
   git submodule deinit sub-name
   git rm sub-name
-  
   ```
-
   
-
 - 运行根目录下的build_for_xxx，在对应平台完成编译和安装，可以修改编译类型，是否编译测试模块，是否进行安装
 
   - windows
