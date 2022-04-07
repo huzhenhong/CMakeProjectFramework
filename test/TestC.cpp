@@ -4,7 +4,7 @@
  * Author       : huzhenhong
  * Date         : 2022-01-20 13:58:58
  * LastEditors  : huzhenhong
- * LastEditTime : 2022-02-17 16:19:43
+ * LastEditTime : 2022-04-07 09:50:25
  * FilePath     : \\CMakeProjectFramework\\test\\TestC.cpp
  * Copyright (C) 2022 huzhenhong. All rights reserved.
  *************************************************************************************/
@@ -12,8 +12,7 @@
 #include <stdio.h>
 
 
-int main(int argc, char* argv[])
-{
+int main(int argc, char* argv[]){
     printf("1 + 2 = %d\n", Sum(1, 2));
 
     return 0;
