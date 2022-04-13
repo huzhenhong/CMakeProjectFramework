@@ -26,6 +26,13 @@
             "linux": {
                 "MIMode": "gdb",
                 // "coreDumpPath": ""
+                "setupCommands": [
+                    {
+                        "text": "-enable-pretty-printing", 
+                        "description": "enable pretty printing", 
+                        "ignoreFailures": true 
+                    },
+                ],
             },
 
             "windows": {
