@@ -8,6 +8,7 @@ project("CMakeProjectFramework"
     )
 
 include(cmake/DetectEnvironment.cmake)
+include(cmake/AddLibrary.cmake)
 include(cmake/CompileOptions.cmake)
 include(cmake/InstallFunc.cmake)
 
