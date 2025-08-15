@@ -22,6 +22,20 @@ foreach(TEST_SRC ${TEST_SRC_LIST})
             ${PROJECT_NAME}
         )
 
+    include(FetchContent)
+    FetchContent_Declare(
+        catch2
+        GIT_REPOSITORY https://github.com/catchorg/Catch2.git 
+        GIT_TAG v3.5.4
+        SOURCE_DIR ${CMAKE_SOURCE_DIR}/ext/catch2
+        GIT_SHALLOW TRUE
+        GIT_PROGRESS TRUE
+        OPTIONS "-DBUILD_EXTRAS=OFF" # 禁止构建额外组件
+        )
+    FetchContent_MakeAvailable(catch2)
+
+    # target_link_libraries(${Target} PUBLIC Tracy::TracyClient)
+
 endforeach()
 
 message("------------------ Stop generate : Test ------------------\n")

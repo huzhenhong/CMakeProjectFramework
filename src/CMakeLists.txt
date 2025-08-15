@@ -23,6 +23,26 @@ target_compile_definitions(${Target}
         LIBRARY_EXPORT
 )
 
+if(IS_BUILD_TRACY)
+    add_definitions(-D TRACY_ENABLE)
+
+    include(FetchContent)
+    FetchContent_Declare(
+        tracy
+        GIT_REPOSITORY https://github.com/wolfpld/tracy.git 
+        GIT_TAG v0.10
+        SOURCE_DIR ${CMAKE_SOURCE_DIR}/ext/tracy
+        GIT_SHALLOW TRUE
+        GIT_PROGRESS TRUE
+        OPTIONS "-DBUILD_EXTRAS=OFF" # 禁止构建额外组件
+        )
+    FetchContent_MakeAvailable(tracy)
+
+    target_link_libraries(${Target} PUBLIC Tracy::TracyClient)
+endif()
+
+
+
 # 导出接口头文件
 set(${Target}_EXPORT_HEADER 
     ${CMAKE_CURRENT_SOURCE_DIR}/common/SysInclude.h

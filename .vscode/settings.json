@@ -1,0 +1,18 @@
+{
+    "cmake.environment": {
+        "PATH": "/opt/rh/devtoolset-7/root/usr/bin:${env:PATH}"
+    },
+    "cmake.configureSettings": {
+        "CMAKE_C_COMPILER": "/opt/rh/devtoolset-7/root/usr/bin/gcc",
+        "CMAKE_CXX_COMPILER": "/opt/rh/devtoolset-7/root/usr/bin/g++",
+        "IS_BUILD_TEST": "ON",
+        "IS_BUILD_TRACY": "ON",
+        "IS_BUILD_INSTALL": "ON",
+    },
+    "cmake.configureArgs": [
+        // "-DFSANET_DEBUG=ON",
+        // "-DLIGHT_STATE_DEBUG=ON",
+        // "-DBACKGROUND_MODEL_DEBUG=ON",
+    ],
+    "cmake.buildArgs": [],
+}

@@ -1,9 +1,9 @@
 
 # opencv相关
-find_package(OpenCV REQUIRED)
-if(NOT OpenCV_FOUND)
-    message(FATAL_ERROR "OpenCV not found!")
-endif(NOT OpenCV_FOUND)
+# find_package(OpenCV REQUIRED)
+# if(NOT OpenCV_FOUND)
+#     message(FATAL_ERROR "OpenCV not found!")
+# endif(NOT OpenCV_FOUND)
 
 include_directories(${OpenCV_INCLUDE_DIRS})
 link_directories(${OpenCV_DIR})
@@ -32,9 +32,9 @@ if(CUDA_ENABLE)
 endif()
 
 # tensorrt
-set(TensorRT_DIR D://DevEnv/TensorRT-7.1.3.4.Windows10.x86_64.cuda-11.0.cudnn8.0/TensorRT-7.1.3.4)
-if(DEFINED TensorRT_DIR)
-  message("TensorRT include : " ${TensorRT_DIR}/include)
-  include_directories(${TensorRT_DIR}/include)
-  link_directories(${TensorRT_DIR}/lib)
-endif(DEFINED TensorRT_DIR)
+# set(TensorRT_DIR D://DevEnv/TensorRT-7.1.3.4.Windows10.x86_64.cuda-11.0.cudnn8.0/TensorRT-7.1.3.4)
+# if(DEFINED TensorRT_DIR)
+#   message("TensorRT include : " ${TensorRT_DIR}/include)
+#   include_directories(${TensorRT_DIR}/include)
+#   link_directories(${TensorRT_DIR}/lib)
+# endif(DEFINED TensorRT_DIR)

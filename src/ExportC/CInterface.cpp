@@ -9,9 +9,12 @@
  * Copyright (C) 2022 huzhenhong. All rights reserved.
  *************************************************************************************/
 #include "CInterface.h"
-
+#include "tracy/Tracy.hpp"
+#include <unistd.h>
 
 int Sum(int a, int b)
 {
+    TracyMessageL("Hello");
+    sleep(1000);
     return a + b;
 }

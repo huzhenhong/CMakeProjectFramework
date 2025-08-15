@@ -7,10 +7,11 @@ project("CMakeProjectFramework"
     HOMEPAGE_URL "project site"
     )
 
-include(cmake/DetectEnvironment.cmake)
-include(cmake/AddLibrary.cmake)
-include(cmake/CompileOptions.cmake)
-include(cmake/InstallFunc.cmake)
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/toolchain.cmake)
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/DetectEnvironment.cmake)
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/AddLibrary.cmake)
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/CompileOptions.cmake)
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/InstallFunc.cmake)
 
 message("\n================= Start configure project [${PROJECT_NAME}] ==================")
 
@@ -30,6 +31,7 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR})
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_BINDIR})
 
 option(IS_BUILD_TEST "option for build test" ON)
+option(IS_BUILD_TRACY "option for build tracy" ON)
 option(IS_BUILD_INSTALL "option for build install" ON)
 
 add_subdirectory(src)
