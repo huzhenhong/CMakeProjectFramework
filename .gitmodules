@@ -1,0 +1,9 @@
+[submodule "ext/tracy"]
+	path = ext/tracy
+	url = http://github.com/wolfpld/tracy.git
+[submodule "ext/spdlog"]
+	path = ext/spdlog
+	url = https://github.com/gabime/spdlog.git
+[submodule "ext/catch2"]
+	path = ext/catch2
+	url = https://github.com/catchorg/Catch2.git
