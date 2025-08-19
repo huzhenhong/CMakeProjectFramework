@@ -39,6 +39,66 @@ namespace MyCudaLib
         }
     }
 
+
+    // --- 新增：RAII 风格的 Stream 管理类 ---
+    class Stream
+    {
+      public:
+        // 构造函数：创建一个新的 CUDA 流
+        Stream()
+        {
+            checkCuda(cudaStreamCreate(&m_stream));
+        }
+        // 析构函数：销毁 CUDA 流
+        ~Stream()
+        {
+            // 注意：在析构函数中最好不要抛出异常
+            // 实际的生产代码中可能需要更复杂的错误处理
+            if (m_stream)
+            {
+                cudaStreamDestroy(m_stream);
+            }
+        }
+
+        // 删除拷贝构造和拷贝赋值
+        Stream(const Stream&)            = delete;
+        Stream& operator=(const Stream&) = delete;
+
+        // 实现移动构造和移动赋值
+        Stream(Stream&& other) noexcept
+            : m_stream(other.m_stream)
+        {
+            other.m_stream = nullptr;
+        }
+        Stream& operator=(Stream&& other) noexcept
+        {
+            if (this != &other)
+            {
+                if (m_stream)
+                    cudaStreamDestroy(m_stream);
+                m_stream       = other.m_stream;
+                other.m_stream = nullptr;
+            }
+            return *this;
+        }
+
+        // 获取底层的 cudaStream_t 对象
+        cudaStream_t get() const
+        {
+            return m_stream;
+        }
+
+        // 等待流中所有先前的操作完成
+        void synchronize() const
+        {
+            checkCuda(cudaStreamSynchronize(m_stream));
+        }
+
+      private:
+        cudaStream_t m_stream = nullptr;
+    };
+
+
     // 2. RAII 风格的设备内存管理类
     template<typename T>
     class DeviceVector
@@ -110,6 +170,27 @@ namespace MyCudaLib
             checkCuda(cudaMemcpy(host_vec.data(), d_ptr, m_count * sizeof(T), cudaMemcpyDeviceToHost));
         }
 
+        // --- 新增：异步拷贝方法 ---
+        void copy_from_host_async(const std::vector<T>& host_vec, const Stream& stream)
+        {
+            if (host_vec.size() != m_count)
+            {
+                throw std::runtime_error("Size mismatch in copy_from_host_async");
+            }
+            // 使用 cudaMemcpyAsync
+            checkCuda(cudaMemcpyAsync(d_ptr, host_vec.data(), m_count * sizeof(T), cudaMemcpyHostToDevice, stream.get()));
+        }
+
+        void copy_to_host_async(std::vector<T>& host_vec, const Stream& stream)
+        {
+            if (host_vec.size() != m_count)
+            {
+                host_vec.resize(m_count);
+            }
+            // 使用 cudaMemcpyAsync
+            checkCuda(cudaMemcpyAsync(host_vec.data(), d_ptr, m_count * sizeof(T), cudaMemcpyDeviceToHost, stream.get()));
+        }
+
         // 获取底层设备指针
         T* data()
         {
@@ -134,15 +215,27 @@ namespace MyCudaLib
 
 
     // 3. 封装后的 C++ SAXPY 算法接口
-    void saxpy(float a, const DeviceVector<float>& x, DeviceVector<float>& y)
+    // void saxpy(float a, const DeviceVector<float>& x, DeviceVector<float>& y)
+    // {
+    //     if (x.size() != y.size())
+    //     {
+    //         throw std::invalid_argument("Input vectors must have the same size.");
+    //     }
+
+    //     // 调用底层的 C 接口，并检查错误
+    //     checkCuda(saxpy_c(a, x.data(), y.data(), static_cast<int>(x.size())));
+    // }
+
+    // --- 更新：提供 saxpy 的异步重载版本 ---
+    void saxpy(float a, const DeviceVector<float>& x, DeviceVector<float>& y, const Stream& stream)
     {
         if (x.size() != y.size())
         {
             throw std::invalid_argument("Input vectors must have the same size.");
         }
 
-        // 调用底层的 C 接口，并检查错误
-        checkCuda(saxpy_c(a, x.data(), y.data(), static_cast<int>(x.size())));
+        // 调用底层的异步 C 接口
+        checkCuda(saxpy_c_async(a, x.data(), y.data(), static_cast<int>(x.size()), stream.get()));
     }
 
 }  // namespace MyCudaLib
