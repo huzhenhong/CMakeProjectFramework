@@ -6,8 +6,8 @@
 #include <stdexcept>
 #include <string>
 #include <vector>
-#include "cuda_algo.h"  // 包含底层的 C ABI 头文件
-
+// #include "cuda_algo.h"  // 包含底层的 C ABI 头文件
+#include <cuda_runtime.h>
 namespace MyCudaLib
 {
 
@@ -227,16 +227,16 @@ namespace MyCudaLib
     // }
 
     // --- 更新：提供 saxpy 的异步重载版本 ---
-    void saxpy(float a, const DeviceVector<float>& x, DeviceVector<float>& y, const Stream& stream)
-    {
-        if (x.size() != y.size())
-        {
-            throw std::invalid_argument("Input vectors must have the same size.");
-        }
+    void saxpy(float a, const DeviceVector<float>& x, DeviceVector<float>& y, const Stream& stream);
+    // {
+    //     if (x.size() != y.size())
+    //     {
+    //         throw std::invalid_argument("Input vectors must have the same size.");
+    //     }
 
-        // 调用底层的异步 C 接口
-        checkCuda(saxpy_c_async(a, x.data(), y.data(), static_cast<int>(x.size()), stream.get()));
-    }
+    //     // 调用底层的异步 C 接口
+    //     checkCuda(saxpy_c_async(a, x.data(), y.data(), static_cast<int>(x.size()), stream.get()));
+    // }
 
 }  // namespace MyCudaLib
 

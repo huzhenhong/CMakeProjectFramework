@@ -14,9 +14,11 @@
 
 int main(int argc, char* argv[])
 {
-    auto exportAbstractClassPtr = CreateExportAbstractClass();
+    auto exportAbstractClassPtr  = CreateExportAbstractClass();
+    auto exportAbstractClassSPtr = CreateExportAbstractClassPtr();
 
     std::cout << "1 + 2 = " << exportAbstractClassPtr->Sum(1, 2) << std::endl;
+    std::cout << "1 + 2 = " << exportAbstractClassSPtr->Sum(1, 2) << std::endl;
 
     return 0;
 }

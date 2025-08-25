@@ -1,13 +1,25 @@
 {
     "cmake.environment": {
-        "PATH": "/opt/rh/devtoolset-7/root/usr/bin:${env:PATH}"
+        // "PATH": "/opt/rh/devtoolset-7/root/usr/bin:${env:PATH}",
+        // "CC": "/opt/rh/devtoolset-7/root/usr/bin/gcc",
+        // "CXX": "/opt/rh/devtoolset-7/root/usr/bin/g++",
+        // "LD_LIBRARY_PATH": "/usr/local/cuda/lib64:${env:LD_LIBRARY_PATH}"
+        // "PATH": "/usr/local/cuda:${env:PATH}"
     },
     "cmake.configureSettings": {
-        "CMAKE_C_COMPILER": "/opt/rh/devtoolset-7/root/usr/bin/gcc",
-        "CMAKE_CXX_COMPILER": "/opt/rh/devtoolset-7/root/usr/bin/g++",
-        "IS_BUILD_TEST": "ON",
-        "IS_BUILD_TRACY": "ON",
-        "IS_BUILD_INSTALL": "ON",
+        // "CMAKE_C_COMPILER": "/opt/rh/devtoolset-7/root/usr/bin/gcc",
+        // "CMAKE_CXX_COMPILER": "/opt/rh/devtoolset-7/root/usr/bin/g++",
+        // "CMAKE_CUDA_COMPILER": "/usr/local/cuda-12.3/bin/nvcc",
+        // "CMAKE_CUDA_COMPILER": "/usr/local/cuda/bin/nvcc",
+        // "CMAKE_CUDA_HOST_COMPILER": "/opt/rh/devtoolset-7/root/usr/bin/g++",
+        // "CUDA_TOOLKIT_ROOT_DIR": "/usr/local/cuda",
+        // "CMAKE_CUDA_FLAGS": "-I/usr/local/cuda/include -L/usr/local/cuda/lib64",
+        // "CMAKE_CUDA_STANDARD": "17",
+        // "CMAKE_CUDA_STANDARD_REQUIRED": "ON",
+        // "IS_BUILD_TEST": "ON",
+        // "IS_BUILD_TRACY": "ON",
+        // "IS_BUILD_INSTALL": "ON",
+        // "IS_BUILD_CUDA": "ON",
     },
     "cmake.configureArgs": [
         // "-DFSANET_DEBUG=ON",

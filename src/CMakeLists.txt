@@ -17,9 +17,10 @@ message("\n------------------ Start generate : ${Target} ------------------")
 
 # add_library(${Target} SHARED ${${Target}_SRCS})
 # link_directories(${CMAKE_SOURCE_DIR}/include)
-add_library(${Target} SHARED ${CMAKE_CURRENT_SOURCE_DIR}/cuda_algo.cu)
+aux_source_directory(. SRCS)
+add_library(${Target} SHARED ${SRCS})
 
-message("src: " ${CMAKE_CURRENT_SOURCE_DIR}/cuda_algo.cu)
+message("src: " ${SRCS})
 # message("PROJECT_SOURCE_DIR: ${PROJECT_SOURCE_DIR}")
 
 target_include_directories(${Target} 
